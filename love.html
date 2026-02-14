@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaaay ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #ff4b6e, #ff758c);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            color: white;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            z-index: 2;
+            animation: pop 1s ease forwards;
+        }
+
+        .subtext {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            z-index: 2;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+        /* ❤️ Srdíčka */
+        .heart {
+            position: absolute;
+            color: rgba(255, 0, 100, 0.8);
+            animation: float linear forwards;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0.6);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.4);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Yaaay! 💖<br>Can't wait for our special day! ❤️</h1>
+    <div class="subtext">(Tesco Tunning Sraz Date)</div>
+
+<script>
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    // Barvy jen pro love.html
+    const colors = ["#7b2cff", "#00c3ff", "#00ffcc", "#c77dff"]; 
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    heart.style.color = color;
+    heart.style.textShadow = `0 0 12px ${color}`;
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 25 + 15 + "px";
+
+    const duration = Math.random() * 3 + 2;
+    heart.style.animationDuration = duration + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, duration * 1000);
+}
+
+// hned na start víc srdíček
+for (let i = 0; i < 25; i++) {
+    createHeart();
+}
+
+// průběžně generuje další
+setInterval(createHeart, 120);
+</script>
+
+</body>
+</html>
